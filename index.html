@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P3-M09</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P3-M09</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0 (1 paso) -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision-mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión (1 paso)</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 1 "Materiales y Preparación"</div>
+        <div class="summary">El maestro revisa la preparación de los materiales.</div>
+    </div>
+    <div id="revision-mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (N/A minutos): Proyectar la diapositiva 1 "Materiales y Preparación"</div>
+            <div class="dialogue">No se requiere diálogo, es un check interno para el profesor.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo-ritual')">
+        <div class="title">
+            <span>📝 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club"</div>
+        <div class="summary">Dar la bienvenida a los estudiantes de manera entusiasta.</div>
+    </div>
+    <div id="saludo-ritual" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club"</div>
+            <div class="dialogue">"¡Hola, Genios! 🌟 Hoy tenemos una misión emocionante. Vamos a crear nuestro propio juego en Scratch, donde recolectaremos objetos y sumaremos puntos. ¡Será un gran reto!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo"</div>
+            <div class="dialogue">"Antes de empezar, quiero saber cómo se sienten hoy. Si están emocionados, hagan una gran sonrisa; si sienten que necesitan más energía, pongan una cara seria. ¡Vamos a ver cómo está la energía para este reto!"</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento"</div>
+            <div class="dialogue">"Vamos a juntar nuestras manos y dar las gracias por el tiempo que vamos a compartir y todo lo que vamos a aprender hoy. ¡Gracias por estar aquí, Genios!"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="dialogue">"Hoy tenemos dos objetivos importantes: 1) Diseñar un juego simple en Scratch usando eventos y control. 2) Recolectar objetos en el juego y sumar puntos. ¡Es una misión muy divertida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2 (4 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state-change')">
+        <div class="title">
+            <span>📝 Actividad 2: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 6 "State Change"</div>
+        <div class="summary">Guiar a los estudiantes en una secuencia de movimientos para activar su creatividad.</div>
+    </div>
+    <div id="state-change" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 6 "State Change"</div>
+            <div class="dialogue">"¡Es hora de movernos un poco, Genios! Hoy vamos a activar nuestra creatividad con un ejercicio rápido que nos ayudará a pensar como programadores. ¡Vamos allá!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 7 "Instrucciones: Secuencia de Movimientos"</div>
+            <div class="dialogue">"El reto de hoy es seguir una secuencia de movimientos. Yo les voy a dar una serie de instrucciones, como 'levanta la mano derecha', 'da un giro', o 'salta', y ustedes tienen que seguirlas en orden. Este ejercicio nos ayudará a pensar en pasos ordenados, como los que haremos al programar nuestro juego."</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 8 "Reflexión: ¿Cómo les fue?"</div>
+            <div class="dialogue">"¿Qué tal les fue con la secuencia? ¿Hubo algún movimiento que fue más difícil? Recuerden que la programación también sigue un orden, y a veces si un paso no está bien, todo lo demás se puede desordenar. ¡Así que vamos a ser muy claros con nuestros pasos hoy!"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): No proyectar diapositiva, solo diálogo del profesor</div>
+            <div class="dialogue">"Este ejercicio es similar a lo que haremos en Scratch. Cuando creamos un juego, necesitamos darle instrucciones claras al personaje, como moverse, recolectar objetos y sumar puntos. Cada paso cuenta, ¡y si uno falla, el juego no funcionará bien!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (5 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>📝 Actividad 3: Challenge (5 pasos)</span>
+            <span>⏰ Tiempo: 22 minutos</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 9 "Challenge: Crear un Juego en Scratch"</div>
+        <div class="summary">Guiar a los estudiantes a crear un juego en Scratch, diseñando primero en papel y luego programando en Scratch.</div>
+    </div>
+    <div id="challenge" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 9 "Challenge: Crear un Juego en Scratch"</div>
+            <div class="dialogue">"¡Genios, ha llegado el momento del reto del día! Hoy vamos a crear nuestro propio juego en Scratch donde un personaje tiene que recolectar objetos y sumar puntos. ¿Listos para el desafío?"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 10 "Diseño del Juego: Paper Programming"</div>
+            <div class="dialogue">"Antes de programar, vamos a diseñar nuestro juego con Paper Programming. Usen las Magic Tablets para dibujar cómo se verá su juego: ¿Qué objetos recolectarán? ¿Qué hará su personaje? ¡Tienen 5 minutos para dibujar sus ideas!"</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (5 minutos): Proyectar la diapositiva 11 "Temporizador: 5 Minutos"</div>
+            <div class="dialogue">"Tienen 5 minutos para diseñar su juego en las Magic Tablets. ¡Pónganse creativos y dibujen su idea!"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (15 minutos): Proyectar la diapositiva 12 "Programar el Juego en Scratch"</div>
+            <div class="dialogue">"Ahora que han diseñado su juego, vamos a programarlo en Scratch. Recuerden usar los eventos para controlar a su personaje y los objetos. ¡A programar!"</div>
+        </div>
+        <!-- Paso 5 -->
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar la diapositiva 13 "Prueba del Juego"</div>
+            <div class="dialogue">"Es momento de probar su juego. Hagan clic en la bandera verde y vean si su personaje puede recolectar los objetos y sumar puntos. Si no funciona, vuelvan al código y ajusten lo que sea necesario."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (4 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('team-gnius')">
+        <div class="title">
+            <span>📝 Actividad 4: Team Gnius (4 pasos)</span>
+            <span>⏰ Tiempo: 7.5 minutos</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 14 "Team Gnius" y formar parejas para discutir mejoras del juego</div>
+        <div class="summary">Los estudiantes trabajan en parejas para reflexionar sobre cómo mejorar el juego que han creado en Scratch.</div>
+    </div>
+    <div id="team-gnius" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 14 "Team Gnius" y formar parejas</div>
+            <div class="dialogue">"¡Es momento de trabajar en equipo, Genios! Vamos a formar parejas para discutir cómo podríamos mejorar nuestro juego de recolección de objetos. ¡Escojan a su compañero!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 15 "Temporizador: 1 Minuto"</div>
+            <div class="dialogue">"Tienen 1 minuto para organizarse en parejas. ¡Vamos, rápido y con energía!"</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 16 "Mejoras del Juego"</div>
+            <div class="dialogue">"Ahora, en equipo, piensen en cómo podrían mejorar su juego. ¿Qué otras funciones podrían añadir? ¿Cómo podrían hacerlo más divertido? Anoten sus ideas en las Magic Tablets."</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (4 minutos): Proyectar la diapositiva 17 "Reflexión en Equipo"</div>
+            <div class="dialogue">"Tienen 4 minutos para discutir en equipo y anotar las mejoras que podrían hacerle a su juego. ¡Pónganse creativos!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 (3 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor-dojo')">
+        <div class="title">
+            <span>📝 Actividad 5: Honor de Dojo (3 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 18 "Revisión de Objetivos" y reflexionar sobre el trabajo realizado</div>
+        <div class="summary">Los estudiantes revisan los objetivos alcanzados durante la misión y reflexionan sobre lo aprendido.</div>
+    </div>
+    <div id="honor-dojo" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 18 "Revisión de Objetivos"</div>
+            <div class="dialogue">"¡Genios, hoy han hecho un trabajo increíble! Han creado su propio juego en Scratch, programaron eventos, controlaron al personaje, y sumaron puntos. ¡Felicidades por completar la misión!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Reflexionar y compartir experiencias</div>
+            <div class="dialogue">"Me encantaría que levanten la mano y me digan, ¿qué fue lo que más les gustó del reto de hoy? ¿Qué fue lo más divertido o desafiante de crear su juego?"</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Proyectar la diapositiva 19 "Honor de Dojo: Ordenando"</div>
+            <div class="dialogue">"Antes de irnos, recuerden que ser Genios también significa cuidar nuestro entorno. Vamos a recoger las Magic Tablets, las computadoras y asegurarnos de que todo esté en orden para la próxima misión."</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
